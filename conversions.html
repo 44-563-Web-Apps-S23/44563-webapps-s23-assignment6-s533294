@@ -17,10 +17,24 @@
 
     <input type="button" onclick="convert()" value="Show Conversions">
 </form>
-
-
 <p id="result"></p>
+<form>
+    <input type="radio" id="mean" name="radio" value="mean"   
+      checked >
+    <label for="mean">Average</label></br>
+  
+    <input type="radio" id="maximum" name="radio" 
+       value="maximum">
+    <label for="maximum">Max</label></br>
+  
+    <input type="radio" id="minimum" name="radio"   
+       value="min">
+    <label for="min">Min</label></br>
 
+    <input type="button" onclick="chooseOp()" value="Get values from radio group">
+  </form>
+  <p id="radioResult"></p>
+ 
 <script> 
 
 function convert(){
@@ -32,9 +46,33 @@ function convert(){
         base*=2;
     }
     document.getElementById("result").innerHTML = "Conversions are: "+ toShow;
+}
+function chooseOp(){
+    let base = document.getElementById("base").value;
+    let conv = document.getElementById("conv").value;
 
+    let avg = document.getElementById("mean").checked;
+    let max = document.getElementById("maximum").checked;
+    let min = document.getElementById("minimum").checked;
+    let result = document.getElementById("radioResult");
     
-    
+    if(avg){
+        result.innerHTML = "Average of "+ base +" and "+conv+" is: " + ((base + conv)/2);
+    }else if(max){
+        if(base>conv){
+            result.innerHTML = "Max of "+ base +" and "+ conv +" is: " +base;
+        }else{
+            result.innerHTML = "Max of "+ base +" and "+ conv +" is: " +conv;
+        }
+        
+    }else if(min){
+        if(base<conv){
+            result.innerHTML = "Max of "+ base +" and "+ conv +" is: " +base;
+        }else{
+            result.innerHTML = "Min of "+ base +" and "+ conv +" is: " +conv;
+        }
+    }
+
 }
 </script>
 
