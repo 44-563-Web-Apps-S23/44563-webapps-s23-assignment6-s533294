@@ -22,6 +22,14 @@
 
     <input type="button" onclick="selectBox()" value="Select a box">
   </form>
+  <form>
+    <label for="size">Enter the size</label>
+    <input type ="text" id="size" name="size" value="size" autofocus> <br>
+
+    <label for="price">Enter price</label>
+    <input type ="text" id="price" name="price" autofocus> <br>
+    <input type="button" onclick="updateBox()" value="Update the box">
+  </form>
 
 <p id="result">This text will be replaced </p>
 
@@ -34,8 +42,13 @@ function selectBox(){
     my_candy_box["nuts"] = document.getElementById("nuts").checked
     my_candy_box["chewy"] = document.getElementById("chewy").checked
 
-    result.innerHTML = "Dark Chocolate: "+my_candy_box.dark+", Nuts: "+my_candy_box.nuts+", Chewy: "+my_candy_box.chewy;
+    result.innerHTML = my_candy_box;
+}
 
+function updateBox(){
+    my_candy_box["size"] = document.getElementById("size").value
+    my_candy_box["price"] = document.getElementById("price").value
+    result.innerHTML = my_candy_box;
 }
 
 </script>
