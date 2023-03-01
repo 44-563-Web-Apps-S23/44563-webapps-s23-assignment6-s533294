@@ -18,13 +18,19 @@
 </form>
 
 <button id="checkButton" onclick="checkPainter()">Check the guess</button>
-
-
 <p id="result"></p>
+
+<div>
+    <img src="cherry.png" height="100" width="100" onclick="selectImage()" id="switchImage">
+</div>
+
+
+
 
 <script> 
 let good = 0;
 let oops = 0;
+let useImage = 1;
 function checkPainter (){
     console.log("Getting form values");
     let painter = document.getElementById("hiddenPainter").value;
@@ -41,6 +47,24 @@ function checkPainter (){
         oops++;
         out.innerHTML = "Good: "+good+"\n Oops: "+oops;
     }
+}
+function selectImage(){
+    let img = document.getElementById("switchImage");
+    switch(useImage){
+        case 1:
+            useImage = 2;
+            img.src = "spruce.png";
+            break;
+        case 2:
+            useImage = 3;
+            img.src = "magnolia.png";
+            break;
+        case 3:
+            useImage = 1;
+            img.src = "cherry.png";
+            break;
+    }
+
 }
 </script>
 
